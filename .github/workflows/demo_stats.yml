@@ -29,7 +29,7 @@ jobs:
 
       - name: Screenshot Website
         id: screenshot_website
-        uses: swinton/screenshot-website@v1.0.0
+        uses: swinton/screenshot-website@v1.0.2
         with:
           delay: 10
           source: https://coderstats.net/github/#${{ steps.get_owner.outputs.owner }}
