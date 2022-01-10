@@ -10,7 +10,7 @@ jobs:
     steps:
     - name: Check permissions and scan environment
       id: prechecks
-      uses: actions/github-script@v3
+      uses: actions/github-script@v5.1.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
@@ -34,7 +34,7 @@ jobs:
     - name: Pre-Check-Failed
       id: precheck-failed
       if: failure()
-      uses: actions/github-script@v3
+      uses: actions/github-script@v5.1.0
       env:
         message: ${{steps.prechecks.outputs.error}}
       with:
@@ -67,7 +67,7 @@ jobs:
         github.event.label.name == 'aws'
     steps:
     - name: ACK deployment request
-      uses: actions/github-script@v3
+      uses: actions/github-script@v5.1.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
@@ -78,7 +78,7 @@ jobs:
             body: '👋 @' + context.actor + ', deployment request for ${{ github.event.label.name }} received ...'
           })
     - name: Kicking off deployment
-      uses: actions/github-script@v3
+      uses: actions/github-script@v5.1.0
       env:
         cloud: ${{ github.event.label.name }}
         customer: ${{ github.event.pull_request.head.ref }}
