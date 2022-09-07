@@ -18,7 +18,7 @@ jobs:
     
       - name: Do we need approval from somebody else?
         if: github.event.issue.user.login == github.event.comment.user.login
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6.2.0
         env:
           ISSUE_PAYLOAD: ${{ steps.parse.outputs.payload }}
         with:
@@ -41,7 +41,7 @@ jobs:
             }
       
       - name: Approval granted
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6.2.0
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -52,7 +52,7 @@ jobs:
               body: '👋 @' + context.actor + ', approval granted, creating deployment request ...'
             })
       - name: Kicking off deployment
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6.2.0
         env:
           title: ${{ github.event.issue.title }}
           body: ${{ github.event.issue.body }}
