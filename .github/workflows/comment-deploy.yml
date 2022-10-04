@@ -14,7 +14,7 @@ jobs:
     steps:
     - name: Check permissions and label
       id: prechecks
-      uses: actions/github-script@v3
+      uses: actions/github-script@v6.3.1
       env:
         comment: ${{ github.event.comment.body }}
       with:
@@ -66,7 +66,7 @@ jobs:
     - name: Pre-Check-Failed
       id: precheck-failed
       if: failure()
-      uses: actions/github-script@v3
+      uses: actions/github-script@v6.3.1
       env:
         message: ${{steps.prechecks.outputs.error}}
       with:
@@ -93,7 +93,7 @@ jobs:
         GITHUB_CONTEXT: ${{ toJson(github) }}
       run: echo "$GITHUB_CONTEXT"
     - name: ACK deployment request
-      uses: actions/github-script@v3
+      uses: actions/github-script@v6.3.1
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
@@ -110,7 +110,7 @@ jobs:
               labels: ['${{ needs.permission.outputs.cloud}}']
           })
     - name: Kicking off deployment
-      uses: actions/github-script@v3
+      uses: actions/github-script@v6.3.1
       env:
         cloud: ${{ needs.permission.outputs.cloud }}
         customer: ${{ needs.permission.outputs.customer }}
