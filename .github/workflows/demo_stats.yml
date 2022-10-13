@@ -18,7 +18,7 @@ jobs:
 
       - name: Determine User/Org to grab stats for
         id: get_owner
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6.3.2
         with:
           script: |
             try {
@@ -40,7 +40,7 @@ jobs:
 
       - name: Get the PR Branch
         id: get_branch
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6.3.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
@@ -86,7 +86,7 @@ jobs:
 
       - name: Acknowledge Comment
         id: acknowledge_comment
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6.3.2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
